@@ -18,11 +18,18 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tipControl: UISegmentedControl!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        lblTip.text="$0.00"
-        lblTotal.text="$0.00"
+        
+        var currencyFormatter = NSNumberFormatter()
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
+        currencyFormatter.locale = NSLocale.currentLocale()
+        lblTip.text=currencyFormatter.stringFromNumber(0)
+        lblTotal.text=currencyFormatter.stringFromNumber(0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,10 +47,15 @@ class ViewController: UIViewController {
         var billAmount = NSString(string:txtAmount.text!).doubleValue;
         var tipsAmt=billAmount * tipPercentage;
         var total=tipsAmt + billAmount;
-        lblTip.text=String(format:"%.2f",tipsAmt)
-        lblTotal.text=String(format:"%.2f",total)
+        var currencyFormatter = NSNumberFormatter()
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
+        currencyFormatter.locale = NSLocale.currentLocale()
+        lblTip.text=currencyFormatter.stringFromNumber(tipsAmt)//String(format:"%.2f",tipsAmt)
+        lblTotal.text=currencyFormatter.stringFromNumber(total)//String(format:"%.2f",total)
     }
-
+   
+    
     @IBAction func onTap(sender: AnyObject) {
         view.endEditing(true)
     }
