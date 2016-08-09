@@ -1,9 +1,5 @@
 # Pre-work - Tip Calculator
 
-> HINT: Please
-> - include this README.md in your project and fill out the information. 
-> - remove all the HINT blocks in this file.
-
 **Tips** is a tip calculator application for iOS.
 
 Submitted by: Le Minh Chau
